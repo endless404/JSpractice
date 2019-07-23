@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>时钟</title>
+	<script type="text/javascript" src="jquery-1.11.1.min.js"></script>
+	<script type="text/javascript">
+	$(document).ready(function(){
+		setInterval("time()",100);
+	})
+	function time(){
+		var data = new Date();
+		var houers = data.getHours();
+		var min = data.getMinutes();
+		var sec = data.getSeconds();
+		if(min<10){
+			min = "0" + min;
+		}
+		if(sec<10){
+			sec = "0" + sec;
+		}
+		if(houers<10){
+			houers = "0" + houers;
+		}
+		$("#q1").text(houers + ":" + min + ":" + sec);
+	}
+	</script>
+</head>
+<body>
+	现在时间是：<div id="q1" style="display: inline-block;"></div>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>aohasu</title>
+    <meta charset="utf-8">
+    <link rel="shortcut icon" href="images/tz.ico">
+    <link rel="stylesheet" type="text/css" href="index.css">
+</head>
+
+<body>
+    <div id="lunbo">
+        <img src="images/1.png" class="first">
+        <img src="images/2.png">
+        <img src="images/3.png">
+        <img src="images/4.png">
+        <img src="images/5.png">
+        <img src="images/6.png">
+        <ul>
+            <li class="dian"></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+    <script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript">
+        var i = 0;
+        var time = 0;
+        autoPlay();
+        $("#lunbo ul li").mouseout(
+            function() {
+                autoPlay();
+            }
+        )
+
+        function autoPlay() {
+            time = setInterval(
+                function() {
+                    i++;
+                    if (i > 5) {
+                        i = 0
+                    };
+                    $("ul li").eq(i).addClass("dian").siblings("li").removeClass("dian");
+                    $("#lunbo img").eq(i).fadeIn().siblings("img").fadeOut();
+                }, 2000
+            )
+        }
+        $("#lunbo ul li").mouseover(
+            function() {
+                clearInterval(time); //清楚定时器
+                i = $(this).index(); //index（）
+                $(this).addClass("dian").siblings("li").removeClass("dian");
+                $("#lunbo img").eq(i).fadeIn().siblings("img").fadeOut();
+            }
+        )
+    </script>
+</body>
+
+</html>

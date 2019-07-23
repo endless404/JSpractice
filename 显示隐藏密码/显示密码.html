@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>显示密码</title>
+</head>
+<body>
+	<div>
+		<input type="password" id="pass_word">
+		<img style="position: absolute;left: 160px;top: 12px;" id="passShow" onclick="oclickChange()" src="hide.png" alt="">
+	</div>
+</body>
+<script type="text/javascript">
+	function oclickChange() {
+		var ducPass = document.getElementById('pass_word');
+		var ducImg = document.getElementById('passShow');
+		// ducPass.type = "password" ? "text" : "password";
+		// ducImg.src = "hide.png" ? "show.png" : "hide.png";
+		if(ducPass.type == "password"){
+			ducPass.type = "text";
+			ducImg.src = "show.png";
+		}else if(ducPass.type == "text"){
+			ducPass.type = "password";
+			ducImg.src = "hide.png";
+		}
+	}
+</script>
+</html>

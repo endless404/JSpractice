@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <title>点击切换</title>
+    </head>
+
+    <style type="text/css">
+        .all{
+            position: relative;
+        }
+        img{
+            width: 680px;
+            height: 800px;
+        }
+        input{
+            width: 200px;
+            height: 20px;
+            border: 2px solid rgba(0,0,0,0.5);
+        }
+        #someQues{
+            float: right;
+            transform: translate(-850px,100px);
+        }
+        .question{
+            margin:auto;
+            font-size: 14px;
+        }
+        .but{
+            padding: 5px 30px;
+            transform: translate(10px);
+            border-radius: 8px;
+            background: pink;
+            color: rgba(0,0,0,0.5);
+        }
+        #switch{
+            display: none;
+        }
+        #next{
+            float: right;
+            transform: translate(-650px, 0);
+        }
+        #next img{
+            height: 20px;
+            width: 20px;
+        }
+        #prev{
+            float: right;
+            transform: translate(-700px, 0);
+        }
+        #prev img{
+            height: 20px;
+            width: 20px;
+        }
+    </style>
+
+    <body>
+        <div class="all">
+            <img id="somePhotoChange" src="back2.jpg" alt="">
+            <div id="someQues"> 
+                <p class="question">朋友是谁?</p>
+                <input type="text" id="verification"><button class="but" onclick="verifica()">验证</button>
+            </div>
+            <button id="switch" onclick="changePhoto()">点击按钮切换</button>
+            <button onclick="prev()" id="next"><img src="next.png" alt=""></button>
+            <button onclick="prev()" id="prev"><img src="previous.png" alt=""></button>
+        </div>
+    </body>
+
+    <script type="text/javascript">
+        function find(val) {
+            return document.getElementById('val')
+        }
+
+        function prev() {
+            var ne = document.getElementById('somePhotoChange');
+            console.log(ne)
+        }
+
+        function verifica() {
+           cl = document.getElementById('verification').value;
+           // console.log(cl);
+           // cl = '';
+           //test方法用于检测是否匹配
+           var word = /^[A-Za-z]*$/;
+           if(cl == '' || !isNaN(cl) || word.test(cl)){
+                alert("要输入汉字哦");
+                document.getElementById('verification').value = '';
+           }else if(cl == '松哥哥' || cl == '松松' || cl == '劲哥哥'){
+                document.getElementById('someQues').style.display="none";
+                var sw = document.getElementById('switch');
+                sw.style.display='block';
+                sw.style.background='pink';
+                sw.style.color='rgba(0,0,0,0.5)';
+                sw.style.borderRadius='8px';
+                sw.style.padding='5px 30px';
+                sw.style.float='right';
+                sw.style.transform='translate(-850px,100px)';
+           }else{
+                alert('答案错了哦,就看不了惊喜咯');
+           }
+        }
+
+        function changePhoto() {
+            var ch = document.getElementById('somePhotoChange');
+            if(ch.src.match("back2")){
+                ch.src="background.png"
+            }else if(ch.src.match("background")){
+                ch.src="background2.jpg";
+            }else if(ch.src.match("background2")){
+                ch.src="background3.jpg"
+            }else if(ch.src.match("background3")){
+                ch.src="back.jpg"
+            }else{
+                ch.src="back3.jpg"
+            }
+        }
+    </script>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>placeholder轮换</title>
+	<meta charset="utf-8">
+</head>
+<body>
+<script type="text/javascript">
+	window.onload = function(){
+		var a = document.getElementById("ins");
+		var i = -1;
+		function time(as){
+			i +=1;
+			var arr = ["今日新闻：成都大雨","火星人的到来","地球的温度持续上升"];
+			if(i == 3){
+				i = 0;
+			};
+			console.log(as);
+			a.setAttribute("placeholder",arr[i]);
+		}
+		setInterval(time,2000,1);
+	}
+</script>
+<input type="text" name="" id="ins" placeholder="温度持续上升">
+</body>
+</html>

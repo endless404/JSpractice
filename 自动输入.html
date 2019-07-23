@@ -1,0 +1,54 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div id="a"></div>
+	<script type="text/javascript">
+		var i = 0;
+		function add(){
+			var str = "如果有一天，<br>你嫁为人妻。<br>请别忘记。<br>娶你是我毕生的梦想。<br>我的女王殿下。<br>臣退了，<br>这一退，就是一辈子。";
+			var a = document.getElementById("a");
+			if(i < str.length){
+				a.innerHTML = str.substring(0,i++) + "_";	
+			} else{
+				a.innerHTML = str.substring(0,i);
+				return;
+			}
+			setTimeout("add()",200);
+		}
+		add();
+	</script>
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div id="text"></div>
+</body>
+<script type="text/javascript">
+	var i = 0;
+	function auto() {
+		var text = document.getElementById("text");
+		var str = "如果有一天，<p>你嫁为人妻。<p>请别忘记。<p>娶你是我毕生的梦想。<p>我的女王殿下。<p>臣退了，<p>这一退，就是一辈子。";
+		// alert(str.length);
+		if(i < str.length) {
+			text.innerHTML = str.substring(0,i++) + "_";
+		}else{
+			text.innerHTML = str.substring(0,i);
+			return;
+		}
+		setTimeout("auto()",200);
+	}
+
+	auto();
+	
+</script>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>自动上下滚动</title>
+    <meta charset="utf-8">
+</head>
+
+<body>
+    <div id="div" style="width:100px;height:100px;background-color:#ccc;position:fixed;top:0px;left:5%;"></div>
+    <script type="text/javascript">
+        var box = document.getElementById("div");
+        var bn = true;
+        var nn = true;
+        function add() {
+            var WindowT = document.documentElement.clientHeight - 100;
+            var WindowW = document.documentElement.clientWidth - 100;
+            var TopT =parseInt(box.style.top);
+            var WidT =parseInt(box.style.left);
+            if (TopT <= 0) {
+                bn = true;
+            } else if (TopT >= WindowT) {
+                bn = false;
+            }
+            if (WidT <= 0) {
+                nn = true;
+            } else if (WidT >= WindowW) {
+                nn = false;
+            }
+            if (bn){
+                document.getElementById("div").style.top = (TopT + 1) + 'px';
+            }
+            else{
+                document.getElementById("div").style.top = (TopT - 1) + 'px';
+            }
+            if(nn){
+            	document.getElementById("div").style.left = (WidT + 1) + 'px';
+            } else{
+            	document.getElementById("div").style.left = (WidT - 1) + 'px';
+            }
+        }
+        setInterval("add()", 10);
+
+    </script>
+</body>
+
+</html>

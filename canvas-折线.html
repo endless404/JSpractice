@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<canvas id="canvas" style="border: 1px solid #ccc;"></canvas>
+	<script type="text/javascript">
+		function getMousePos(canvas, evt) { 
+		   var rect = canvas.getBoundingClientRect(); 
+		   return { 
+		     x: evt.clientX - rect.left * (canvas.width / rect.width),
+		     y: evt.clientY - rect.top * (canvas.height / rect.height)
+		   }
+		}
+		var canvas = document.getElementById("canvas");
+		canvas.width = 800;
+		canvas.height = 800;
+		var cxt = canvas.getContext("2d");
+		var dataList = [600,300,500,200,700];
+		aim();
+		time();
+		zhexian();
+		circle();
+		function aim(){
+			cxt.fillStyle = "red";
+			cxt.beginPath();
+			cxt.moveTo(90,110);
+			cxt.lineTo(100,100);
+			cxt.lineTo(110,110);
+			cxt.lineTo(100,100);
+			cxt.lineTo(100,700);
+			cxt.lineTo(700,700);
+			cxt.lineTo(690,690);
+			cxt.lineTo(700,700);
+			cxt.lineTo(690,710);
+			cxt.stroke();
+			cxt.closePath();
+			for(var i =0;i<5;i++){
+				cxt.lineWidth = 10;
+				cxt.beginPath();
+				cxt.moveTo(100,695-100*(i+1));
+				cxt.lineTo(110,695-100*(i+1));
+				cxt.stroke();
+				cxt.closePath();
+			}
+			for(var i =0;i<5;i++){
+				cxt.lineWidth = 10;
+				cxt.beginPath();
+				cxt.moveTo(95+100*(i + 1),690);
+				cxt.lineTo(95+100*(i + 1),700);
+				cxt.stroke();
+				cxt.closePath();
+			}
+		}
+		function time(){
+			cxt.fillStyle = "#27be9b";
+			cxt.font = "20px Arial";
+			var data = ["2011","2012","2013","2014","2015"];
+			for(var i =0;i< 5;i++){
+				cxt.fillText(data[i],50,700-(100 * (i+1)));
+			}
+			for(var i =0;i< 5;i++){
+				cxt.fillText(data[i],70+100*(i +1),720);
+			}
+		}
+		function zhexian(){
+			cxt.lineWidth = 3;
+			cxt.beginPath();
+			cxt.moveTo(200,600);
+			for(var i = 1;i<dataList.length+1;i++){
+				cxt.lineTo(100*(i+2),dataList[i])
+			}
+			cxt.stroke();
+			cxt.closePath();
+		}
+		function circle(){
+			for(var i = 0;i<dataList.length;i++){
+				cxt.fillStyle = "#ccc";
+				cxt.beginPath();
+				cxt.arc(100*(i + 2),dataList[i],7,0,2*Math.PI);
+				cxt.fill();
+				cxt.closePath();
+			}
+		}
+		canvas.addEventListener("mousemove",function(e){
+			var mousePos =getMousePos(canvas, e);
+			var x = mousePos.x,y = mousePos.y;
+			for(var i = 0;i < 5;i++){
+				if(x > 100+100*(i+1) - 5 && x < 100+100*(i+1) + 5&&y > dataList[i] - 5&&y < dataList[i] + 5){
+					alert(11111111111);
+				}
+			}
+		})
+	</script>
+</body>
+</html>

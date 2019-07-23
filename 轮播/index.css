@@ -1,0 +1,41 @@
+*{
+	margin: 0px;
+	padding: 0px;
+}
+#lunbo{
+	width: 800px;
+	height: 600px;
+	position: relative;
+	margin: 100px auto;
+}
+#lunbo img{
+	width: 800px;
+	height: 600px;
+	position: absolute;
+}
+#lunbo .first{
+	z-index: 1;
+}
+#lunbo ul{
+	width: 150px;
+	height: 24px;
+	background-color: rgba(0,0,0,0.5);
+	z-index: 2;
+	position: absolute;
+	list-style: none;
+	bottom: 40px;
+	left: 325px;
+	border-radius: 15px;
+}
+#lunbo ul li{
+	height: 16px;
+	width: 16px;
+	border-radius: 8px;
+	float: left;
+	margin-left: 7px;
+	margin-top:4px;
+	background-color: rgba(255,255,255,0.7);
+}
+#lunbo ul .dian{
+	background-color: red;
+}

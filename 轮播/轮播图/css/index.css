@@ -1,0 +1,59 @@
+@charset 'utf-8';
+
+.container {
+    width: 500px;
+    height: 300px;
+    margin: 100px auto;
+    position: relative;
+    overflow: hidden;
+}
+
+.wrapper {
+    width: calc(8 * 500px);
+    height: 100%;
+    /* 回去自己查font-size */
+    font-size: 0;  
+    position: absolute;
+    top: 0px;
+    left: -500px;
+}
+
+.wrapper img {
+    width: 500px;
+    height: 100%;
+    vertical-align: middle;
+}
+
+.btn {
+    padding: 8px;
+    background-color: gray;
+    color: #fff;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+.prev-btn {
+    left: 20px;
+}
+.next-btn {
+    right: 20px;
+}
+.pagenation {
+    position: absolute;
+    left: 50%;
+    transform: translateY(-50%);
+    bottom: 20px;
+}
+.pagenation-item {
+    display: inline-block;
+    cursor: pointer;
+    width: 13px;
+    height: 13px;
+    border-radius: 50%;
+    background-color: orange;
+    margin: 0 6px;
+}
+.pagenation-item.show {
+    background-color: purple;
+}

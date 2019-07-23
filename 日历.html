@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		#box{
+			width: 352px;
+		}
+		li{
+			list-style: none;
+			float: left;
+			width: 38px;
+			height: 38px;
+			line-height: 38px;
+			margin: 5px;
+			text-align: center;
+		}
+		.active{
+			color: red;
+			border: 1px solid #fff;
+		}
+		.unactive{
+			border: 1px solid #fff; 
+		}
+		.unactive:hover{
+			cursor: pointer;
+			border: 1px solid #ccc;
+		}
+	</style>
+</head>
+<body>
+	<ul>
+		<li>一</li>
+		<li>二</li>
+		<li>三</li>
+		<li>四</li>
+		<li>五</li>
+		<li>六</li>
+		<li>天</li>
+	</ul>
+	<div id="box"></div>
+	<button onclick="prev()">上个月</button>
+	<button onclick="next()">下个月</button>
+	<script type="text/javascript">
+		var datea = new Date();
+		active();
+		function active(){
+			var nian = datea.getFullYear();
+			var yue = datea.getMonth();
+			var tian = datea.getDate();
+			var toDay = new Date();
+			document.getElementById('box').innerHTML = "";
+			var dateaa = new Date(nian,yue,1).getDay();
+			// console.log(dateaa);
+			for(var i = 0;i < dateaa -1;i++){
+				var li=document.createElement('li'); 
+    			document.getElementById('box').appendChild(li); 
+			}
+			var All = new Date(nian,yue + 1,0).getDate();
+			// console.log(All);
+			for(var i = 1;i<All +1;i++){
+				var li=document.createElement('li');
+				if (nian == toDay.getFullYear() && yue == toDay.getMonth() && i== toDay.getDate()){
+					li.className = "active";
+			} else{
+				li.className = "unactive";
+			}
+				li.innerHTML = i;
+				document.getElementById('box').appendChild(li); 
+			}
+		};
+		function prev(){
+			datea.setMonth(datea.getMonth()-1);
+			active();
+		}
+		function next(){
+			datea.setMonth(datea.getMonth()+1);
+			active();
+		}
+	</script>
+</body>
+</html>

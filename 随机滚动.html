@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html style="height: 100%;">
+
+<head>
+    <title>adass</title>
+    <meta charset="utf-8">
+</head>
+
+<body style="margin: 0px;padding: 0px;width: 100%;height: 100%;">
+    <div id="div" style="width:100px;height:100px;background-color:#ccc;position:fixed;top:0px;left:0px;"></div>
+    <script type="text/javascript">
+        var box = document.getElementById("div");
+        var bn1 = true,
+            bn2 = true;
+
+        function add() {
+            var WindowWidth = document.body.clientWidth;
+            var WindowHeight = document.body.clientHeight;
+            var divWidth = getNumberToString(document.getElementById("div").style.width, true)
+            var divHeight = getNumberToString(document.getElementById("div").style.height, true)
+            var TopT = getNumberToString(box.style.top, true);
+            var leftT = getNumberToString(box.style.left, true);
+            if (TopT <= 0) {
+                bn1 = true;
+            } else if (WindowHeight - divHeight <= TopT) {
+                bn1 = false;
+            }
+            if (leftT <= 0) {
+                bn2 = true;
+            } else if (WindowWidth - divWidth <= leftT) {
+                bn2 = false;
+            }
+            if (bn1)
+                document.getElementById("div").style.top = (TopT + 1) + 'px';
+            else
+                document.getElementById("div").style.top = (TopT - 1) + 'px';
+            if (bn2)
+                document.getElementById("div").style.left = (leftT + 1) + 'px';
+            else
+                document.getElementById("div").style.left = (leftT - 1) + 'px';
+        }
+
+        function getNumberToString(str, bn) {
+            var returnString = '';
+            for (var i = 0; i < str.length; i++) {
+                if (isNaN(str[i]))
+                    if (bn) {
+                        if (returnString == '') {
+                            return 0;
+                        } else {
+                            return parseInt(returnString);
+                        }
+                    } else {
+                        continue;
+                    }
+                returnString += str[i];
+            }
+            return parseInt(returnString);
+        }
+        setInterval("add()", 10);
+    </script>
+</body>
+
+</html>

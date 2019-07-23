@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    body {
+      background-color: lightblue;
+      margin: 0;
+    }
+
+    .file-box {
+      box-sizing: border-box;
+      width: 1000px;
+      height: 300px;
+      background-color: #fff;
+      margin: 0 auto;
+      margin-top: 100px;
+      padding: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    img {
+      width: 78px;
+      height: 78px;
+    }
+
+    /* .file-box>#preview-box img:nth-child(1) {
+      position: absolute;
+    } */
+
+    .btn {
+      width: 80px;
+      height: 80px;
+      background-color: #fff;
+      /* outline: none; */
+      border: none;
+      border: 1px solid #ccc;
+    }
+
+    .btn:not(:nth-last-child(1)) {
+      margin-right: 30px;
+    }
+
+    .btn>span {
+      display: inline-block;
+      width: 60px;
+      font-size: 60px;
+      color: #2e60f8;
+
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="file-box">
+    <!-- 存放预览图片的盒子 -->
+    <div class="preview-box">
+      <button class="btn"></button>
+      <button class="btn"></button>
+      <button class="btn"></button>
+      <button class="btn"></button>
+      <button class="btn"></button>
+      <button class="btn"></button>
+    </div>
+    <input type="file" name="file" id="input_file" accept="image/gif,image/jpeg,image/jpg,image/png,image/svg"
+      onchange="imgPreview(this)">
+
+  </div>
+
+  <script>
+
+    document.querySelector("#input_file").style.display = "none";
+    var btn_array = document.querySelectorAll(".btn");
+    console.log(btn_array)
+    for (var i = 0; i < btn_array.length; i++) {
+      btn_array[i].onclick = function () {
+        document.getElementById("input_file").click();
+      };
+    }
+    // document.querySelectorAll(".btn").onclick = function() {
+    //   document.getElementById("input_file").click();
+    // };
+
+    // 定义空数组，存放本地图片路径
+    var img_array = [];
+    function imgPreview(fileDom) {
+      // console.log(fileDom)
+      // console.log(window)
+      // console.log(window.FileReader)
+      //判断是否支持FileReader
+      if (window.FileReader) {
+        var reader = new FileReader();
+        // console.log(reader)
+      } else {
+        alert("您的设备不支持图片预览功能，如需该功能请升级您的设备！");
+      }
+      //获取文件
+      var file = fileDom.files[0];
+      var imageType = /^image\//;
+      //是否是图片
+      if (!imageType.test(file.type)) {
+        alert("请选择图片！");
+        return;
+      }
+      //读取完成
+      reader.onload = function (e) {
+        // 将图片路径装在一个数组里，便于动态记载生成imgDOM节点
+        img_array.push(e.target.result)
+        console.log(img_array)
+        //获取存放预览图片的dom盒子
+        var img_box = document.querySelectorAll(".preview-box button");
+        //动态生成img的DOM节点
+        var htmlStr = [];
+        for (var i = 0; i < img_array.length; i++) {
+          htmlStr.push(
+            `
+            <img src="${img_array[i]}" alt="图片加载失败">
+          `
+          )
+          console.log(htmlStr[i])
+          img_box[i].innerHTML = htmlStr[i]
+          
+        }
+        // img.src = e.target.result;
+        // img_box[0].innerHTML = htmlStr[0];
+        // img_box[1].innerHTML = htmlStr[1];
+        // for (var i = 0; i < img_array.length; i++) {
+          
+        // }
+      };
+      reader.readAsDataURL(file);
+    }
+  </script>
+</body>
+
+</html>

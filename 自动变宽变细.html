@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+</head>
+<body>
+	<div class="box" style="height: 100px;width: 100px;background-color: red"></div>
+	<script type="text/javascript">
+			var aim = true;
+			setInterval(function(){
+				if(aim){
+					if($(".box").width() < 200){
+						$(".box").css("width",$(".box").width() + 1 + "px");
+					} else if($(".box").width() == 200){
+						aim = !aim;
+					}
+				} else{
+					$(".box").css("width",$(".box").width() - 1 + "px");
+					if($(".box").width() == 0){
+						aim = !aim;
+					}
+				}
+			},5);
+	</script>
+</body>
+</html>

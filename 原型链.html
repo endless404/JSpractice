@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>原型链</title>
+	<meta charset="utf-8">
+</head>
+<body>
+<script type="text/javascript">
+	function Box(){
+		this.name = "fff";
+		Box.prototype.age = 10;
+	};
+	function Box2(){
+		//Box2.prototype = {age : 10};
+		//constructor = Box2;
+		constrctor = Box2;
+		this.run = function(){
+			return this.age;
+		}
+	};
+	var a = new Box2();
+	alert(a.run())
+</script>
+</body>
+</html>

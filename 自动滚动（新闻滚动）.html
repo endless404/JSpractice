@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>新闻滚动</title>
+</head>
+<script type="text/javascript" src="jquery-1.11.1.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	setInterval("a()",1000);
+})
+function a(){
+	$(document).animate($("ul li:first").appendTo("ul"),1000);
+}
+</script>
+<body>
+	<ul>
+		<li>我是111</li>
+		<li>我是222</li>
+		<li>我是333</li>
+		<li>我是444</li>
+		<li>我是555</li>
+	</ul>
+</body>
+</html>

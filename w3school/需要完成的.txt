@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <title>点击切换</title>
+    </head>
+
+    <style type="text/css">
+        .all{
+            position: relative;
+        }
+        img{
+            width: 1800px;
+            height: 2200px;
+        }
+        input{
+            width: 200px;
+            height: 20px;
+            margin: 15px 0 10px 130px;
+            border: 2px solid rgba(0,0,0,0.5);
+        }
+        #someQues{
+            position: absolute;
+            top: 0;
+            left: 600px;
+
+        }
+        .question{
+            margin:auto;
+            font-size: 14px;
+            margin-left: 130px;
+            color: yellow;
+        }
+        .but{
+            padding: 5px 30px;
+            margin-left: 20px;
+            border-radius: 8px;
+            background: pink;
+            color: rgba(0,0,0,0.5);
+            box-shadow: 0 0 10px orange;
+        }
+        #switch{
+            display: none;
+        }
+    </style>
+
+    <body>
+        <div class="all">
+            <img id="change" src="a.jpg" alt="">
+            <div id="someQues"> 
+                <p class="question">你的老公是谁啊?</p>
+                <input type="text" id="verification"><button class="but" onclick="verifica()">验证</button>
+            </div>
+            <button id="switch" onclick="changePhoto()">点击按钮切换</button>
+        </div>
+    </body>
+
+    <script type="text/javascript">
+        
+        function verifica() {
+           cl = document.getElementById('verification').value;
+           // console.log(cl);
+           // cl = '';
+           //test方法用于检测是否匹配
+           var word = /^[A-Za-z]*$/;
+           if(cl == '' || !isNaN(cl) || word.test(cl)){
+                alert("要输入汉字哦");
+                document.getElementById('verification').value = '';
+           }else if(cl == '松哥哥' || cl == '松松' || cl == '劲哥哥'){
+                document.getElementById('someQues').style.display="none";
+                var sw = document.getElementById('switch');
+                sw.style.display='block';
+                sw.style.background='pink';
+                sw.style.color='rgba(0,0,0,0.5)';
+                sw.style.borderRadius='8px';
+                sw.style.padding='5px 30px';
+                sw.style.boxShadow=' 0 0 10px orange';
+                sw.style.position='absolute';
+                sw.style.top='0';
+                sw.style.left='750px';
+           }else{
+                alert('答案错了哦,就看不了惊喜咯');
+           }
+        };
+        function changePhoto() {
+            var ch = document.getElementById('change');
+            if(ch.src = 'a.jpg'){
+                ch.src='b.jpg';
+            }else if(ch.src = 'b.jpg'){ 
+                ch.src= 'c.jpg';
+            }
+            else if(ch.src ='c.jpg'){
+                ch.src="d.jpg";
+            }else{
+                ch.src="a.jpg";
+            }
+        }
+    </script>
+</html>

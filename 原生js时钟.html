@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>111</title>
+	<meta charset="utf-8">
+	<script type="text/javascript">
+	 window.onload=function(){
+	 	setInterval("time()",100)
+	 }
+	  
+	  function time(){
+	  	var a  = new Date();
+	 	var shi = a.getHours();
+	 	var fen = a.getMinutes();
+	  	var miao = a.getSeconds();
+	  	if (shi < 10) {
+	  		shi  =  "0" + shi;
+	  	};
+	  	if (fen < 10) {
+	  		fen  =  "0" + fen;
+	  	};
+	  	if (miao < 10) {
+	  		miao  =  "0" + miao;
+	  	};
+
+	  	var b = shi + ":" + fen + ":" + miao;
+	  	document.getElementById("q").innerText = b;
+	  }
+	</script>
+</head>
+<body>
+	<div>
+		<span id="q"></span>
+	</div>
+</body>
+
+</html>
