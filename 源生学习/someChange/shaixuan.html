@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>筛选</title>
+</head>
+<style type="text/css">
+	*{
+		margin: 0;
+		padding: 0;
+	}
+	.total {
+		width: 500px;
+		margin: auto;
+		margin-top: 100px;
+	}
+	.top .list{
+		display: flex;
+	}
+	.top .list li{
+		list-style-type: none;
+		margin-left: 8px;
+
+	}
+	.top .list input{
+		list-style-type: none;
+		width: 60px;
+	}
+	table{
+		width: 220px;
+		margin-top: 50px;
+	}
+</style>
+<script type="text/javascript" src="data.json"></script>
+<body>
+	<div class="total">
+		<div class="top">
+			<ul class="list">
+				<li><input type="text" name="username" id="username"></li>
+				<li><input type="text" name="userage" id="userage"></li>
+				<li><input type="text" name="usersex" id="usersex"></li>
+				<li><button id="shaixuan" onclick="shaixuan()">筛选</button></li>
+			</ul>
+		</div>
+		<div>
+			<table>
+				<tr class="row">
+					<th>姓名</th>
+					<th>年龄</th>
+					<th>性别</th>
+				</tr>
+				<tr class="row">
+					<td>zjs</td>
+					<td>18</td>
+					<td>男</td>
+				</tr>
+				<tr>
+					<td>lp</td>
+					<td>17</td>
+					<td>男</td>
+				</tr>
+				<tr>
+					<td>zzc</td>
+					<td>20</td>
+					<td>男</td>
+				</tr>
+				<tr>
+					<td>ydq</td>
+					<td>11</td>
+					<td>女</td>
+				</tr>
+				<tr>
+					<td>wy</td>
+					<td>16</td>
+					<td>女</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+</body>
+<script type="text/javascript">
+	var listdata = [
+		{
+			name: 'zjs',
+			age: '18',
+			sex: '男'
+		},
+		{
+			name: 'lp',
+			age: '17',
+			sex: '男'
+		},
+		{
+			name: 'zzc',
+			age: '20',
+			sex: '男'
+		},
+		{
+			name: 'ydq',
+			age: '11',
+			sex: '女'
+		},
+		{
+			name: 'wy',
+			age: '16',
+			sex: '女'
+		},
+	]
+	function shaixuan() {
+		var button = document.getElementById("shaixuan");
+		var name = document.getElementById("username").value;
+		var age = document.getElementById("userage").value;
+		var sex = document.getElementById("usersex").value;
+		console.log(name);
+
+	}
+</script>
+</html>

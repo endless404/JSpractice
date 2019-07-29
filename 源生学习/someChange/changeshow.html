@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>点击切换</title>
+</head>
+<style type="text/css">
+	.checklist {
+		color: red;
+		font-size: 16px;
+		display: flex;
+	}
+	.checklist li{
+		flex: 1;
+		width: 100px;
+		list-style-type: none;
+		border: 4px solid red;
+		margin: 50px;
+		padding: 10px;
+	}
+	.checklist .select{
+		display: flex;
+		flex: 1;
+		background: red;
+		color: white;
+	}
+	.allItem {
+		margin-left: 90px;
+	}
+	.selectItem2 , .selectItem3 {
+		display: none;
+	}
+</style>
+<body>
+	<ul class="checklist">
+		<li id="select1" class="select">OSM</li>
+		<li id="select2">ODM</li>
+		<li id="select3">OEM</li>
+	</ul>
+
+	<div class="allItem">
+		<div class="selectItem1">
+			<p>OSM——Original Strategy Manufacturer //原始策略制造商</p>
+			<p>当客户遇到由产品和市场引发的系统性经营难题，浪尖可提供以设计创新为核心的创新产品开发及产业链服务整体
+				解决方案，设计开发具有最新技术含量，符合或引导市场消费的高科技产品。</p>
+			<p>“全产业链设计创新”是浪尖集团在行业内率先提出的服务理念，浪尖强调：设计是系统性的商业行为，创新必须基于对市场趋势和产业链管
+				理的无缝对接。因此，系统和策略，既是浪尖的运营方式，亦是服务客户的指导思想。</p>
+		</div>
+		<div class="selectItem2">
+			<p>ODM——Original Design Manufacturer //原始设计制造商</p>
+			<p>客户提出产品的概念、功能、规格等要求，由浪尖将其从设想变为现实，交付高品质产成品。</p>
+			<p>浪尖设计，是与中国产业共同成长起来的，是具有综合实力的工业设计公司，是中国全产业链设计创新服务平台；拥有超过15年
+				的产品设计经验，设计及相关服务人员700余人，服务国内外品牌客户近1000名，累积成功案例已超过10000个。</p>
+		</div>
+		<div class="selectItem3">
+			<p>OEM——Original Equipment Manufacturer //原始设备制造商</p>
+			<p>品牌客户利用自己掌握的核心技术负责设计和开发新产品，浪尖根据客户的个性化要求进行生产代工。</p>
+			<p>浪尖集团及其成员企业汇鼎实业全力支持；汇鼎系中国最早成长起来的、致力于高端制造的代表性企 业之一；除了自身卓越的模具设计、
+				生产管理和品质控制能力之外，还能整合中国制造重镇——东莞，乃至全国的供应链资源，为客户提供超乎预期的高品质代工服务。</p>
+		</div>
+	</div>
+</body>
+<script type="text/javascript">
+	var allLi = document.querySelectorAll("li");
+	var select1 = document.getElementById("select1");
+	var select2 = document.getElementById("select2");
+	var select3 = document.getElementById("select3");
+	// var len = allLi.length;
+	select1.onclick = function() {
+		for(let i in allLi) {
+			allLi[i].classList.remove("select");
+	}
+			select1.classList.add("select");
+	}
+	select2.onclick = function() {
+		for(let i in allLi) {
+			allLi[i].classList.remove("select");
+	}
+			select2.classList.add("select");
+		
+	}
+	select3.onclick = function() {
+		for(let i in allLi) {
+			allLi[i].classList.remove("select");
+	}
+			select3.classList.add("select");
+		}
+	
+	
+</script>
+</html>

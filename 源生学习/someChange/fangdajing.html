@@ -1,0 +1,87 @@
+	<!DOCTYPE html>
+<html>
+<head>
+	<title>放大镜</title>
+</head>
+<style type="text/css">
+	*{margin: 0;padding: 0;}
+	#box {width: 450px; height: 250px;position: relative;margin: 100px}
+	#smile_box {width: 450px; height: 250px;position: relative;border: 2px solid rgba(0,0,0,0.3);}
+
+	#glass {position: absolute;cursor: move;width: 100px;height: 100px;background: rgba(255,192,203,0.6);top: 0;left: 0;display: none;}
+
+	#big_box {position: absolute;width: 580px;height: 340px;position:absolute;top:0;left:460px;border: 2px solid rgba(0,0,0,0.3);overflow:hidden;display: none;}
+	#big_img {position:absolute;top:0;left:0;}
+</style>
+<body>
+	<div id="box">
+		<div id="smile_box">
+			<img src="4.jpg" height="250" width="450">
+			<div id="glass"></div>
+		</div>
+		<div id="big_box">
+			<img src="4.jpg" height="700" width="1200" id="big_img">
+		</div>
+	</div>
+</body>
+<script type="text/javascript">
+	// (function(window){})(window)
+	window.onload = function() {
+		function $(id) {
+			return typeof(id) === "string" ? document.getElementById(id) : id;
+		}
+		var box = $("box") , smile_box = $("smile_box") ,glass = $("glass"),big_box = $("big_box"),big_img = $("big_img");
+		smile_box.onmouseover = function() {
+			glass.style.display = "block";
+			big_box.style.display = "block";
+		}
+		smile_box.onmouseout = function() {
+			glass.style.display = "none";
+			big_box.style.display = "none";
+		}
+		smile_box.onmousemove = function() {
+			var event = event || window.event;
+			//鼠标在页面的坐标 注：当图片需要滚动显示时使用上两条
+			var pagex = event.pageX || event.clientX + document.documentElement.scrollLeft;
+			var pagey = event.pageY || event.clientY + document.documentElement.scrollTop;
+			//鼠标在图片内的坐标
+			var mousex = pagex - box.offsetLeft;
+			var mousey = pagey - box.offsetTop;
+			//glass的坐标
+			var glassx = mousex - glass.offsetWidth / 2;
+			var glassy = mousey - glass.offsetWidth / 2;
+			// var mousex = event.offsetX;
+			// var mousey = event.offsetY;
+			// console.log(glassx , glassy , glass.offsetWidth);
+			//glass在图片内的坐标
+			// var glassx = mousex - glass.offsetWidth / 2;
+			// var glassy = mousey - glass.offsetWidth / 2;
+			// console.log("(x=" + glassx +"," + "y=" + glassy + ")");
+			if(glassx < 0){
+				glassx = 0
+			}
+			if(glassx > smile_box.offsetWidth - glass.offsetWidth){
+				glassx = smile_box.offsetWidth - glass.offsetWidth
+			}
+			if(glassy < 0){
+				glassy = 0
+			}
+			if(glassy > smile_box.offsetHeight - glass.offsetHeight){
+				glassy = smile_box.offsetHeight - glass.offsetHeight
+			}
+			glass.style.left = glassx + "px";
+			glass.style.top = glassy + "px";
+
+			//大图移动比例
+			var propx = (big_img.offsetWidth - big_box.offsetWidth) / (smile_box.offsetWidth - glass.offsetWidth);
+			var propy = (big_img.offsetHeight - big_box.offsetHeight) / (smile_box.offsetHeight - glass.offsetHeight);
+			//大图坐标
+			var bigImgx = propx * glassx;
+			var bigImgy = propy * glassy;
+
+			big_img.style.top = - bigImgy + "px";
+			big_img.style.left = - bigImgx + "px";			
+		}
+	}
+</script>
+</html>

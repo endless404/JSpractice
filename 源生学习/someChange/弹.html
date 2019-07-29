@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>弹</title>
+</head>
+<style type="text/css">
+	#kuang {background: pink;width: 100px;height: 100px;position: fixed;}
+</style>
+<body>
+	<div id="kuang" style="top: 0; left: 0;width: 100px;height: 100px;"></div>
+</body>
+<script type="text/javascript">
+	var box = document.getElementById("kuang");
+	var bn = true;
+	var nn = true;
+	function bom() {
+		var winH = document.documentElement.clientHeight - 100; //可视化区域高度
+		var winW = document.documentElement.clientWidth - 100; //可视化区域宽度
+		var boxT = parseInt(box.style.top);
+		var boxL = parseInt(box.style.left);
+		if(boxT <= 0) {
+			bn = true
+		} else if(boxT >= winH) {
+			bn = false
+		}
+		if(boxL <= 0) {
+			nn = true
+		} else if(boxL >= winW) {
+			nn = false
+		}
+		if(bn) {
+			box.style.top = (boxT + 1) + "px";
+		} else {
+			box.style.top = (boxT - 1) + "px";
+		}
+		if(nn) {
+			box.style.left = (boxL + 1) + "px";
+		} else {
+			box.style.left = (boxL - 1) + "px";
+		}
+	}
+	window.onmousedown = function() {
+		//兼容性写法:在ie浏览器中,window.event是全局变量,在非ie中，就需要自己传入一个参数来获取event
+		var event = event || window.event;
+		var mousey = event.pageY || event.clientY + document.documentElement.scrollTop;
+		var mousex = event.pageX || event.clientX + document.documentElement.scrollLeft;
+		box.style.top = (mousey - clean(box.style.height) / 2) + "px";
+		box.style.left = (mousex - clean(box.style.height) / 2) + "px";
+		
+	}
+	function clean(item) {
+		return item.replace("px" , "");
+	}
+	setInterval("bom()" , 10);
+</script>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>时间</title>
+</head>
+<style type="text/css"></style>
+<body>
+	<div id="show"></div>
+</body>
+<script type="text/javascript">
+	setInterval(window.onload = function() {
+		var time = new Date();
+		var hour = time.getHours();
+		var min = time.getMinutes();
+		var miao = time.getSeconds();
+		hour = hour < 10 ? "0" + hour : hour
+		min = min < 10 ? "0" + min : min
+		miao = miao < 10 ? "0" + miao : miao
+
+		document.getElementById("show").innerText = hour + ":" + min + ":" + miao
+	},10);
+</script>
+</html>

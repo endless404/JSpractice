@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>lazyLoad</title>
+	<meta charset="utf-8">
+</head>
+<style type="text/css">
+	img{
+		width: 1200px;
+		display: block;
+		height: 800px;
+	}
+</style>
+<body>
+		<img src="" lazy-src="2.jpg">
+		<img src="" lazy-src="3.jpg">
+		<img src="" lazy-src="2.jpg">
+		<img src="" lazy-src="3.jpg">
+		<img src="" lazy-src="4.jpg">
+		<img src="" lazy-src="5.jpg">
+		<img src="" lazy-src="6.jpg">
+		<img src="" lazy-src="7.jpg">
+
+<script type="text/javascript">
+	var allImg = document.querySelectorAll("img");//所有的图片数组
+	var len = allImg.length;//数组长度
+	var n = 0;//存储图片加载到的位置，避免每次都从第一张图片开始遍历
+	// console.log(document.documentElement.scrollTop);
+	// console.log(document.documentElement.clientHeight);
+	window.setTimeout(
+		window.onscroll = function () {
+			// console.log(document.documentElement.scrollTop); 页面滚动获取顶部与可视窗口顶部像素
+			// console.log(document.documentElement.clientHeight); 页面可见区域的高度
+			var seeHeight = document.documentElement.clientHeight;
+			var scrollTop = document.body.scrollTop || document.documentElement.scrollTop;
+			for(var i = 0; i < len; i++){
+				if(allImg[i].offsetTop < seeHeight + scrollTop){
+					if (allImg[i].getAttribute('src') == '') {
+						allImg[i].src = allImg[i].getAttribute('lazy-src');
+					}		
+				}
+				n = i + 1;
+				console.log('n = ' + n)
+				}
+			},1800);
+</script>
+</body>
+</html>
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div>
+		<ul>
+			<li><input type="text" name="username" id="username"></li>
+			<li><input type="text" name="userage" id="userage"></li>
+			<li><input type="text" name="usersex" id="usersex"></li>
+		</ul>
+	</div>
+</body>
+	<script type="text/javascript" src="jquery-3.4.1.min.js"></script>
+	<script type="text/javascript" src="jquery-3.4.1.js"></script> -->
+<!-- <script type="text/javascript"> -->
+	<!-- // var i = 0
+	// function auto() {
+	// 	let show = document.getElementById("show");
+	// 	let str = "如果有一天，<p>你嫁为人妻。<p>请别忘记。<p>娶你是我毕生的梦想。<p>我的女王殿下。<p>臣退了，<p>这一退，就是一辈子。";
+	// 	// alert(str.length);
+	// 	i < str.length ? show.innerHTML = str.substring(0 , i++) + "_" : show.innerHTML = str.substring(0,i);
+	// 	// if (i < str.length) {
+	// 	// 	show.innerHTML = str.substring(0 , i++) + "_";
+	// 	// 	// alert(str);
+	// 	// } else {
+	// 	// 	show.innerHTML = str.substring(0,i);
+	// 	// }
+	// 	setTimeout("auto()",200);
+	// }
+	// auto();
+
+
+	// var show = JSON.parse(show)
+	// alert(show[0])
+
+	// var a = ['a','b','c'];
+	// var b = [];
+	// var c = {
+	// 	name: 'zjs',
+	// 	age: '12'
+	// }
+	// for (let i in a) {
+	// 	alert("for in ==" + i)
+	// }
+
+	// var a = ['a','b','c'];
+	// for (let i of a) {
+	// 	alert("for of ==" + i)
+	// }
+	//浅拷贝 : 影响原始数据
+	// b = a
+
+	//深拷贝
+	// for(let i in a) {
+	// 	b.push(a[i])
+	// }
+	//es6
+	// var [... b] = a
+	// var {... b} = c
+	// b.name = 'ydq'
+	// console.log(b)
+	// console.log(c)
+	// b = a.slice(0)
+	// b[0] = '0'
+	// alert(a)
+	// alert(b)
+
+	// var show = JSON.parse(show);
+	// console.log(show);
+	document.getElementById("show").style.padding = "20px";
+	document.getElementById("show").style.background = "red";
+	// $("#show").style.padding = "20px";
+	// $("#show").style.background = "black"; -->
+
+
+<!-- </script> -->
+<!-- <script type="text/javascript" src="data.json"></script> -->
+
+<!-- <script type="text/javascript" src="jquery-1.11.1.min.js"></script> -->
+<!-- </html> -->
