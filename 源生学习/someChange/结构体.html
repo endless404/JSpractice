@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>结构</title>
+</head>
+<style type="text/css">
+	.li {
+		list-style-type: none;
+	}
+</style>
+<body>
+ <div>
+ 	<ul id="list"></ul>
+ </div>
+</body>
+<script defer="defer" type="text/javascript">
+	// function add() {
+	// 	// this.name = 'dfadsfa'
+	// 	// this.age = 12	
+	// }
+	// add.prototype={
+	// 	age : 11,
+	// 	name : 'asd'
+	// }
+	// class some {
+	// 	//类的初始化
+	// 	constructor(){
+	// 		this.name = 'adf'
+	// 		this.age = 123
+	// 	}
+	// }
+	// class more extends some{
+	// 	constructor() {
+	// 		super();
+	// 		// console.log(this.age)
+	// 		this.age = 1234
+	// 	}
+	// }
+	// var a = new add();
+	// var s = new some();
+	// var m = new more();
+	// console.log(a.__proto__);
+	// console.log(a.age)
+	// console.log(m.age)
+	// console.log(s.age)
+
+	// window.onload=function (){
+
+ //    var userName='”xiaoming”';
+
+ //    alert(userName);
+ var container = document.getElementById("list")
+ // var html = [];
+ // for (var i = 0; i < 3; i++) {
+ // 	html.push('<li class="li">' + (i + 1) + '</li>');
+ // }
+ // container.innerHTML = html.join('');
+ for (var i = 0; i < 3; i++) {
+ 	var item = document.createElement('li');
+ 	item.setAttribute('class' , 'li');
+ 	item.innerText = i + 1;
+ 	container.appendChild(item);
+ }
+
+</script>
+</html>

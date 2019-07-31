@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>js兼容性</title>
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+	// ie 与 chrome firefox 兼容问题 获取dom外联样式
+	function getStyle(obj , arr) {
+		return obj.currentStyle ? obj.currentStyle[arr] : getComputedStyle(obj,null)[arr];
+	};
+	// 低版本的ie6 7 兼容问题 获取索引
+	function getIndex(str , index) {
+		return str[index] ? str[index] : str.charAt(index);
+	};
+	// ie chrome 与 firefox 兼容问题 获取滚动条滚动距离
+	var scrollTop = document.body.scrollTop || document.documentElement.scrollTop
+	// ie chrome 与 firefox ie9 chrome 兼容问题 使用event对象
+	// ie chrome 直接使用event.clientX  firefox ie9 chrome 使用参数ev--> ev.clientX
+	document.onclick = function(ev) {
+		var event = event || ev
+	}
+</script>
+</html>

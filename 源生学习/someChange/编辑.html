@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>编辑框</title>
+</head>
+<style type="text/css">
+	#outBox {
+		border: 2px solid pink;
+		width: 350px;
+		height: 350px;
+		margin: 0 auto;
+		position: relative;
+	}
+	#updateImg {
+		margin: 0 auto;
+		margin-left: 900px;
+		margin-top: 20px;
+	}
+	#oprate {
+		display: none;
+		text-align: center;
+		margin-top: 20px;
+	}
+	#showPhoto {
+		position: absolute;
+		width: 200px;
+		height: 200px;
+		display: none;
+	}
+	#down {
+		transform: rotate(90deg);
+	}
+	/*.down {
+		border-width:10px;
+		border-color:#2a4f6c;
+		border-style:dashed;
+		border-left-color: transparent;
+		border-right-color: transparent;
+		line-height: 0;
+		font-size: 0;
+		border-bottom-width: 0;
+	}*/
+</style>
+<body>
+	<!-- <span class="down"></span> -->
+	<div id="outBox" style="">
+		<img id="showPhoto" src="" style="top: 70px;left: 70px;">
+	</div>
+
+	<div>
+		<input type="file" id="updateImg" accept="image/*" name="" onchange="updatePhoto(this)">
+	</div>
+
+	<div id="oprate">
+		<button id="top">^</button>
+		<button id="down">></button>
+		<button id="left"><</button>	
+		<button id="right">></button>
+	</div>
+</body>
+
+<script type="text/javascript" src="jquery-3.4.1.min.js"></script>
+
+<script type="text/javascript">
+	function getStyle(obj , arr) {
+		return obj.currentStyle ? obj.currentStyle[arr] : getComputedStyle(obj,null)[arr];
+	};
+	function cleanPX(item) {
+		return item.replace("px" , "")
+	};
+	// var box = document.getElementById('outBox')
+	// var boxWidth = getStyle(box, 'width');
+	// console.log(boxWidth)
+		var updateBtn = document.getElementById('updateImg');
+		var img = document.getElementById('showPhoto');
+		var btns = document.getElementById('oprate');
+		var box = document.getElementById('outBox');
+		var boxWidth = getStyle(box, 'width');
+		var boxHight = getStyle(box, 'height');
+		var imgWidth = getStyle(img , 'width');
+		var imgHeight = getStyle(img , 'height');
+		// console.log(img.style.right);
+	function updatePhoto(fileDom) {
+		// console.log(fileDom.files)
+		if(window.FileReader) {
+			var reader = new FileReader();
+			// console.log(reader)
+		}else {
+			alert("请选择正确的设备进行图片上传");
+		}
+
+		var file = fileDom.files[0];
+		// console.log(file);
+		var fileType = /^image\//;
+		// console.log(fileType);
+		if(!fileType.test(file.type)) {
+			alert('请选择图片');
+		}
+
+	reader.onload = function(e) {
+		// console.log(123)
+		// console.log($('#showPhoto').attr('src'))
+		// console.log(document.getElementById('showPhoto').src)
+		updateBtn.style.display = "none";
+		btns.style.display = "block";
+		img.src = e.target.result;
+		img.style.display = "block";
+		// console.log(e.target.result);
+		}
+		reader.readAsDataURL(file);
+	}
+		// console.log(imgLeft)
+	$('#top').click(function(){
+		img.style.top = parseInt(cleanPX(img.style.top)) - 5 + 'px';
+		if(parseInt(cleanPX(img.style.top)) < 0){
+			img.style.top = 0;
+		}
+	})	
+	$('#down').click(function(){
+		img.style.top = parseInt(cleanPX(img.style.top)) + 5 + 'px';
+		let stopDownDistence = parseInt(cleanPX(boxHight)) - parseInt(cleanPX(imgWidth));
+		if(parseInt(cleanPX(img.style.top)) > stopDownDistence){
+			img.style.top = stopDownDistence + 'px';
+		}
+	})
+	$('#left').click(function(){
+		img.style.left = parseInt(cleanPX(img.style.left)) - 5 + 'px';
+		if(parseInt(cleanPX(img.style.left)) < 0) {
+			img.style.left = 0;
+		}
+
+	})
+	$('#right').click(function(){
+		img.style.left = parseInt(cleanPX(img.style.left)) + 5 + 'px';
+		let stopDownDistence = parseInt(cleanPX(boxWidth)) - parseInt(cleanPX(imgHeight));
+		if(parseInt(cleanPX(img.style.left)) > stopDownDistence) {
+			img.style.left = stopDownDistence + 'px';
+		}
+	})
+</script>
+</html>
