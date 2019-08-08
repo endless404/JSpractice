@@ -8,17 +8,24 @@
 
 </body>
 <script type="text/javascript">
-	function banF12(ev) {
+	window.onkeydown = function banF12(ev) {
 		var keyNum = window.event ? ev.keyCode : ev.which;
 		if(keyNum == 123) {
 			keyNum = 0;
 			ev.returnValue = false
+			alert("看不了源码哦");
 		}
+		window.onkeydown = function banF12(ev) {
+				if(keyNum == 123) {
+					keyNum = 0;
+					ev.returnValue = false
+				}
+			}
 	}
 	window.oncontextmenu = function(ev) {
 		// 两种中的一个即可
-		e.preventDefault();
-	    e.returnValue = false;
+		// ev.preventDefault();
+	    ev.returnValue = false;
 	}
 </script>
 </html>
